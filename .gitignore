@@ -1,0 +1,15 @@
+venv
+musicnn_env
+seperatedDataInception.txt
+seperatedDataDense.txt
+googleSpeechCommand.py
+__pycache__
+spectrograms
+mel_spectrograms
+archive
+
+# .pt uzantılı dosyaları hariç tut
+*.pt
+
+# Ancak best_models klasörünü dahil et
+!best_models/

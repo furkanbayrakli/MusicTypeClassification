@@ -1,0 +1,15 @@
+librosa
+scikit-learn
+pyspark
+numpy<2.0
+matplotlib
+pyspark
+tensorflow-gpu
+tqdm
+pandas
+transformers
+torch --index-url https://download.pytorch.org/whl/cu118
+torchaudio --index-url https://download.pytorch.org/whl/cu118
+torchvision --index-url https://download.pytorch.org/whl/cu118
+# openai-whisper
+# pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118

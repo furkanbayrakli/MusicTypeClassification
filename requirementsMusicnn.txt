@@ -1,0 +1,9 @@
+musicnn==0.1.0
+numpy==1.16.6
+librosa==0.7.2
+tensorflow-gpu==2.1.0
+scikit-learn==0.22.2.post1
+numba==0.48.0
+resampy==0.2.2
+pandas==0.25.3
+# use python 3.7 
