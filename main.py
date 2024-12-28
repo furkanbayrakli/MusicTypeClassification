@@ -3,6 +3,7 @@ from inceptionV3 import train_inceptionV3
 from denseNet121 import train_denseNet
 from musiCNNmodel import train_musicnn
 from openaiWhisperModel import train_openaiwhisper
+from googleSpeechCommand import train_speech_brain
 # Fold sonuçlarını birleştirmek için fonksiyon
 def combine_kfold_results(model_name, dataset_name, metrics_list):
     combined_results = []
@@ -36,6 +37,7 @@ def calculate_mean_results(metrics_df):
 inception_metrics, inception_total_time = train_inceptionV3()
 dense_metrics, dense_total_time = train_denseNet()
 whisper_metrics, whisper_total_time = train_openaiwhisper()
+speech_brain_metrics, speech_brain_total_time = train_speech_brain()
 musicnn_metrics, musicnn_total_time = train_musicnn()
 
 metrics_data = []
@@ -44,6 +46,7 @@ metrics_data += combine_kfold_results("InceptionV3", "Regular Spectrogram", ince
 metrics_data += combine_kfold_results("DenseNet121", "Mel Spectrogram", dense_metrics["mel"].to_dict(orient="records"))
 metrics_data += combine_kfold_results("DenseNet121", "Regular Spectrogram", dense_metrics["spec"].to_dict(orient="records"))
 metrics_data += combine_kfold_results("OpenaiWhisper", "Audio", whisper_metrics.to_dict(orient="records"))
+metrics_data += combine_kfold_results("GoogleCommandsSpeechBrain", "Audio", speech_brain_metrics.to_dict(orient="records"))
 metrics_data += combine_kfold_results("Musicnn", "Musicnn_features.csv", musicnn_metrics.to_dict(orient="records"))
 
 # DataFrame'e dönüştür
@@ -63,4 +66,5 @@ print(mean_metrics_df)
 print(f"\nTotal Duration for InceptionV3: {inception_total_time:.2f} seconds")
 print(f"Total Duration for DenseNet121: {dense_total_time:.2f} seconds")
 print(f"Total Duration for Openai Whisper: {whisper_total_time:.2f} seconds")
+print(f"Total Duration for Google Commands Speech Brain: {speech_brain_total_time:.2f} seconds")
 print(f"Total Duration for Musicnn: {musicnn_total_time:.2f} seconds")
