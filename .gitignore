@@ -7,6 +7,6 @@ __pycache__
 spectrograms
 mel_spectrograms
 archive
-
+catboost_info
 # .pt uzantılı dosyaları hariç tut
 *.pt

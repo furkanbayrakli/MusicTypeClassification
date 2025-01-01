@@ -13,3 +13,9 @@ torchaudio --index-url https://download.pytorch.org/whl/cu118
 torchvision --index-url https://download.pytorch.org/whl/cu118
 # openai-whisper
 # pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+catboost
+xgboost
+lightgbm
+huggingface_hub
+speechbrain
+

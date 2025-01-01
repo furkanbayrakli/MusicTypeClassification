@@ -9,7 +9,8 @@ def combine_kfold_results(model_name, dataset_name, metrics_list):
     combined_results = []
     
     for fold, metrics in enumerate(metrics_list, start=1):
-        current_fold = 1 if "Classifier" in metrics else fold
+        # Eğer "Classifier" varsa "Round" değerini kullan, yoksa fold'u kullan
+        current_fold = metrics.get("Round", fold)
         model_name = metrics.get("Classifier", model_name)
         combined_results.append([
             model_name,
@@ -26,13 +27,39 @@ def combine_kfold_results(model_name, dataset_name, metrics_list):
 
 # Ortalama metrikleri hesaplama
 def calculate_mean_results(metrics_df):
-    mean_results = metrics_df.groupby(["Model", "Dataset"]).mean(numeric_only=True).reset_index()
-    mean_results["Fold"] = "Mean"  # Fold olarak "Mean" eklenir
-    mean_results = mean_results.sort_values(by="Accuracy", ascending=False).reset_index(drop=True)  # Accuracy değerine göre sırala
+    # Musicnn tabanlı modelleri ayırt etmek için filtre
+    round_based = metrics_df[metrics_df["Dataset"] == "Musicnn_features.csv"]
+    fold_based = metrics_df[metrics_df["Dataset"] != "Musicnn_features.csv"]
+
+    # Round tabanlı modellerin ortalamasını hesapla
+    if not round_based.empty:
+        round_mean = (
+            round_based.groupby(["Model", "Dataset"])
+            .mean(numeric_only=True)
+            .reset_index()
+        )
+        round_mean["Fold"] = "Mean"  # Fold sütununu "Mean" olarak ayarla
+    else:
+        round_mean = pd.DataFrame(columns=metrics_df.columns)
+
+    # Fold tabanlı modellerin ortalamasını hesapla
+    if not fold_based.empty:
+        fold_mean = (
+            fold_based.groupby(["Model", "Dataset"])
+            .mean(numeric_only=True)
+            .reset_index()
+        )
+        fold_mean["Fold"] = "Mean"  # Fold sütununu "Mean" olarak ayarla
+    else:
+        fold_mean = pd.DataFrame(columns=metrics_df.columns)
+
+    # İki sonucu birleştir
+    mean_results = pd.concat([round_mean, fold_mean], ignore_index=True)
+    mean_results = mean_results.sort_values(by="Accuracy", ascending=False).reset_index(drop=True)
+
     return mean_results
 
 
-# Inception, DenseNet ve Musicnn modellerini eğit
 
 inception_metrics, inception_total_time = train_inceptionV3()
 dense_metrics, dense_total_time = train_denseNet()
