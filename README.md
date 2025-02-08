@@ -36,7 +36,7 @@
         MusicCNN
         Speechbrain/google-speech-commands
         
-# Steps for running codes
+# Steps To Run Project
 
         This project uses the extractMusicnnFeatures.py file, which relies on the musicnn library and 
         is compatible only with Python 3.7. Therefore, follow the steps below to run the project:
