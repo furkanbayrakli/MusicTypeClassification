@@ -1,4 +1,4 @@
-MusicTypeClassification
+#MusicTypeClassification
 
         In this project, music genre classification has been performed using signal processing
         and machine learning techniques.
