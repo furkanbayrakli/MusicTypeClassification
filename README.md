@@ -1,4 +1,24 @@
 # MusicTypeClassification
+                In this project, music genre classification has been performed using signal processing
+                and machine learning techniques.
+                Recently, an increase in music data and the emergence of various music genres have
+                been observed. Music genre classification plays a critical role in organizing and
+                accurately categorizing this vast amount of music data.
+                In this study, the GTZAN dataset, which contains data from different music genres,
+                has been used. The GTZAN dataset includes 10 different music genres (rock, jazz,
+                classical, pop, blues, metal, reggae, hip-hop, country, and disco), with 100 audio tracks
+                of 30 seconds each per genre.
+                During the data processing stage, Short-Time Fourier Transform (STFT) was initially
+                applied to samples selected from the music genres. The matrix obtained from the STFT
+                is an essential tool for audio analysis. Subsequently, these samples were converted into
+                spectrograms and mel spectrograms, visualizing both frequency and time information.
+                Finally, specific Convolutional Neural Network (CNN)-based models were used in the
+                classification stage.
+                Keywords: Music Genre, Classification, GTZAN, Short-Time Fourier Transform,
+                Audio Analysis, Spectrogram, Mel Spectrogram, Convolutional Neural Networks
+
+
+
 Steps for running codes:
 
         This project uses the extractMusicnnFeatures.py file, which relies on the musicnn library and is compatible only with Python 3.7. Therefore, follow the steps below to run the project:
