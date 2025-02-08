@@ -22,7 +22,8 @@
         Keywords: Music Genre, Classification, GTZAN, Short-Time Fourier Transform,
         Audio Analysis, Spectrogram, Mel Spectrogram, Convolutional Neural Networks
 
-
+# Model Comparison and Performance Evaluation Using K-Fold Cross-Validation
+        In this project, the goal is to compare five different CNN-based models used for music genre classification in terms of performance metrics such as accuracy, precision, recall, and F1 score. To achieve this, K-fold cross-validation is also used, allowing the models' performance to be tested on different train and test datasets. The specified models have been trained and tested, with the aim of determining the model that demonstrates the highest performance.
 # CNN Models Used 
         InceptionV3
         DenseNet121 
